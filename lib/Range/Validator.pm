@@ -4,29 +4,34 @@ use 5.006;
 use strict;
 use warnings;
 
+our $VERSION = '0.01';
+
+sub validate {
+}
+
+1; 
+
+__DATA__
+
 =head1 NAME
 
-Range::Validator - The great new Range::Validator!
+Range::Validator - a simple module to verify array and list ranges
 
 =head1 VERSION
 
 Version 0.01
 
-=cut
-
-our $VERSION = '0.01';
-
-
 =head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
 
     use Range::Validator;
 
-    my $foo = Range::Validator->new();
-    ...
+    my @range = Range::Validator->validate(0..3);      # a valid range
+
+	my @range = Range::Validator->validate(0..3,2);    # a overlapping range
+
+	my @range = Range::Validator->validate('1,3,7');   # a valid range passed as a string
+
+	my @range = Range::Validator->validate('1,XXX,3'); # an invalid range  passed as a string
 
 =head1 EXPORT
 
@@ -36,18 +41,6 @@ if you don't export anything, such as for a purely object-oriented module.
 =head1 SUBROUTINES/METHODS
 
 =head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
@@ -106,4 +99,3 @@ This is free software, licensed under:
 
 =cut
 
-1; # End of Range::Validator
